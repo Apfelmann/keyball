@@ -24,9 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Definieren Sie zuerst Ihre Tap Dance Enums
 enum {
     TD_Q_AT,
-    TD_A_Ä,
-    TD_O_Ö,
-    TD_U_Ü,
+    TD_A_AE,
+    TD_O_OE,
+    TD_U_UE,
     TD_S_SS,
     TD_PLUS_MINUS,
     TD_DOT_COLON,
@@ -42,35 +42,30 @@ enum {
 // Definieren Sie Ihre Tap Dance Aktionen
 tap_dance_action_t tap_dance_actions[] = {
     [TD_Q_AT] = ACTION_TAP_DANCE_DOUBLE(KC_Q, 	RALT(KC_Q)),
-    [TD_A_Ä] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_QUOT),
-    [TD_O_Ö] = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_SCLN),
-    [TD_U_Ü] = ACTION_TAP_DANCE_DOUBLE(KC_U, KC_LBRC),
+    [TD_A_AE] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_QUOT),
+    [TD_O_OE] = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_SCLN),
+    [TD_U_UE] = ACTION_TAP_DANCE_DOUBLE(KC_U, KC_LBRC),
     [TD_S_SS] = ACTION_TAP_DANCE_DOUBLE(KC_S, DE_SS),
     [TD_PLUS_MINUS] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_SLSH),
     [TD_DOT_COLON] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, S(KC_DOT)),
     [TD_COMMA_SEMICOLON] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
-    [TD_LEFT_ANGLE_RIGHT_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_NUBS, S(KC_NUBS)),
     [TD_SLASH_BACKSLASH] = ACTION_TAP_DANCE_DOUBLE(S(KC_7), LCA(DE_SS)),
-    [TD_LEFT_BRACKET_RIGHT_BRACKET] = ACTION_TAP_DANCE_DOUBLE(LCA(KC_8), LCA(KC_9)),
-    [TD_SLEFT_BRACKET_SRIGHT_BRACKET] = ACTION_TAP_DANCE_DOUBLE(LCA(KC_7), LCA(KC_0)),
-    [TD_LEFT_PARENTHESIS_RIGHT_PARENTHESIS] = ACTION_TAP_DANCE_DOUBLE(S(KC_8), S(KC_9)),
-    [TD_HASH_TILDE] = ACTION_TAP_DANCE_DOUBLE(DE_HASH, LCA(DE_PLUS)),
 };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default
   [0] = LAYOUT_universal(
-    TD(TD_Q_AT)    , KC_W     , KC_E     , KC_R     , KC_T     ,                   DE_Z     , TD(TD_U_Ü)     , KC_I     , TD(TD_O_Ö)     , KC_P     ,
-    TD(TD_A_Ä)     , TD(TD_S_SS)     , KC_D     , LSFT_T(KC_F)     , KC_G     ,               KC_H     , LSFT_T(KC_J)     , KC_K     , LT(3, KC_L)     ,  S(DE_SS),
+    TD(TD_Q_AT)    , KC_W     , KC_E     , KC_R     , KC_T     ,                   DE_Z     , TD(TD_U_UE)     , KC_I     , TD(TD_O_OE)     , KC_P     ,
+    TD(TD_A_AE)     , TD(TD_S_SS)     , KC_D     , LSFT_T(KC_F)     , KC_G     ,               KC_H     , LSFT_T(KC_J)     , KC_K     , LT(3, KC_L)     ,  S(DE_SS),
     LSFT_T(DE_Y)   , KC_X     , KC_C     , KC_V     , KC_B     ,                                         KC_N     , KC_M     , KC_BTN1 , KC_BTN2   , S(KC_1)  ,
-    KC_LCTL  , KC_LEFT_GUI  , KC_NO  ,  MT(2,KC_DELETE ) ,LT(MOD_LALT,KC_SPC),LT(3,KC_TAB),         KC_BSPC,LT(1,KC_ENT),KC_NO,KC_NO,KC_NO, KC_ESC
+    KC_LCTL  , KC_LEFT_GUI  , KC_NO  ,  LT(2,KC_DELETE ) ,MT(MOD_LALT,KC_SPC),LT(3,KC_TAB),         KC_BSPC,LT(1,KC_ENT),KC_NO,KC_NO,KC_NO, KC_ESC
   ),
 
   [1] = LAYOUT_universal(
-    LSFT(KC_3) , KC_GRV , 	LSFT(KC_8) ,  LSFT(KC_9) , RALT(KC_NUBS) ,               TD(TD_PLUS_MINUS)  , TD(TD_SLASH_BACKSLASH) , LSFT(KC_4) , LSFT(KC_RBRC) , LSFT(KC_5) ,
-    KC_NO , LSFT(KC_SLSH) , RALT(KC_7) , RALT(KC_0) , 	LSFT(KC_2) ,                           TD(TD_COMMA_SEMICOLON) , TD(TD_DOT_COLON) , 	LSFT(KC_0) , 	LSFT(KC_6) , 	RALT(KC_NUBS) ,
-    KC_LEFT_SHIFT , RALT(KC_RBRC) , RALT(KC_8) , RALT(KC_9) , KC_QUOT ,            KC_NUBS ,S(KC_NUBS) , LSFT(KC_EQL), KC_NO , TD(TD_HASH_TILDE) ,
+    LSFT(KC_3) , KC_GRV , 	LSFT(KC_8) ,  LSFT(KC_9) , LSFT(KC_SLSH) ,               TD(TD_PLUS_MINUS)  , TD(TD_SLASH_BACKSLASH) , LSFT(KC_4) , LSFT(KC_RBRC) , LSFT(KC_5) ,
+    KC_NO , KC_NO , RALT(KC_7) , RALT(KC_0) , 	LSFT(KC_2) ,                           TD(TD_COMMA_SEMICOLON) , TD(TD_DOT_COLON) , 	LSFT(KC_0) , 	LSFT(KC_6) , 	RALT(KC_NUBS) ,
+    KC_LEFT_SHIFT , RALT(KC_RBRC) , RALT(KC_8) , RALT(KC_9) , LSFT(DE_HASH) ,            KC_NUBS ,S(KC_NUBS) , LSFT(KC_EQL), KC_NO , DE_HASH,
     KC_NO , KC_NO , KC_NO , KC_NO , KC_NO , KC_NO ,      KC_NO , KC_NO , KC_NO , KC_NO , KC_NO , KC_NO
   ),
 
